@@ -10,9 +10,9 @@
 
         :root {
             --rojo-espana: #AA151B;
-            --oro-espana: #F1BF00;
+            --oro-oscuro: #B8860B; /* Amarillo/Oro más oscuro para mejor contraste */
             --fondo-gourmet: #F8F5F0;
-            --texto-principal: #202124; /* Color de texto de Google */
+            --texto-principal: #202124;
             --fuente-titulo: 'Playfair Display', serif;
             --fuente-cuerpo: 'Poppins', sans-serif;
         }
@@ -24,7 +24,7 @@
             color: var(--texto-principal); 
         }
 
-        /* HERO - SOLO VIDEO Y REDES */
+        /* HERO - VIDEO Y REDES */
         .hero {
             position: relative;
             height: 70vh;
@@ -60,16 +60,16 @@
             transition: 0.3s;
         }
 
-        /* TEXTO INTRODUCCIÓN */
+        /* TEXTO INTRODUCCIÓN (Altura reducida) */
         .intro-section {
             text-align: center;
-            padding: 60px 20px;
+            padding: 30px 20px; /* Reducción de espacio en blanco */
             background: white;
         }
 
         .intro-section h1 {
             font-family: var(--fuente-titulo);
-            font-size: 3.5rem;
+            font-size: 2.8rem;
             color: var(--rojo-espana);
             margin: 0;
         }
@@ -77,15 +77,15 @@
         .intro-section p {
             font-family: var(--fuente-titulo);
             font-style: italic;
-            font-size: 1.4rem;
-            max-width: 850px;
-            margin: 20px auto;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 10px auto 0;
             color: #444;
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
         /* GALERÍA */
-        .galeria-section { padding: 40px 15px; max-width: 1100px; margin: auto; }
+        .galeria-section { padding: 30px 15px; max-width: 1100px; margin: auto; }
         .galeria { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
@@ -114,17 +114,19 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.06); 
             overflow: hidden;
             border-top: 6px solid var(--rojo-espana);
+            display: flex;
+            flex-direction: column;
         }
 
-        .card-body { padding: 25px; }
-        .item-categoria { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--oro-espana); font-weight: 700; margin-bottom: 8px; display: block; }
+        .card-body { padding: 25px; flex-grow: 1; }
+        .item-categoria { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--oro-oscuro); font-weight: 700; margin-bottom: 8px; display: block; }
         .item-nombre { font-family: var(--fuente-titulo); font-size: 1.5rem; color: #1a1a1a; margin-bottom: 12px; display: block; }
-        .item-descripcion { font-size: 0.9rem; color: #5f6368; line-height: 1.6; margin-bottom: 20px; }
+        .item-descripcion { font-size: 0.9rem; color: #5f6368; line-height: 1.6; }
         .card-footer { padding: 15px 25px; background: #fafafa; border-top: 1px solid #f1f1f1; text-align: right; }
         .item-precio { font-weight: 700; color: var(--rojo-espana); font-size: 1.5rem; }
 
         /* REVIEWS ESTILO GOOGLE MAPS */
-        .reviews-section { max-width: 800px; margin: 60px auto; padding: 0 20px; }
+        .reviews-section { max-width: 800px; margin: 50px auto; padding: 0 20px; }
         .review-google { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 25px; border: 1px solid #dadce0; }
         .review-header { display: flex; align-items: flex-start; margin-bottom: 12px; }
         .avatar { width: 40px; height: 40px; border-radius: 50%; background: #AA151B; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 12px; flex-shrink: 0; }
@@ -134,14 +136,13 @@
         .review-content { font-size: 0.9rem; line-height: 1.5; color: #3c4043; white-space: pre-line; }
 
         /* MAPA */
-        .map-header { text-align: center; margin-top: 60px; }
-        .map-header h3 { font-family: var(--fuente-titulo); color: #70757a; font-style: italic; }
+        .map-header { text-align: center; margin-top: 50px; }
         .map-frame { width: 95%; max-width: 1000px; height: 450px; margin: 20px auto 60px; border-radius: 12px; overflow: hidden; border: 1px solid #dadce0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
 
         /* FOOTER */
-        footer { background: #202124; color: white; text-align: center; padding: 60px 20px; }
-        .footer-social { margin-bottom: 25px; }
-        .footer-social a { color: var(--oro-espana); font-size: 1.8rem; margin: 0 15px; }
+        footer { background: #202124; color: white; text-align: center; padding: 50px 20px; }
+        .footer-social { margin-bottom: 20px; }
+        .footer-social a { color: var(--oro-oscuro); font-size: 1.8rem; margin: 0 15px; }
     </style>
 </head>
 <body>
@@ -177,58 +178,42 @@
 </section>
 
 <section class="reviews-section">
-    <h2 style="font-family: var(--fuente-titulo); margin-bottom: 30px; text-align: center;">Reseñas de Google</h2>
+    <h2 style="font-family: var(--fuente-titulo); margin-bottom: 30px; text-align: center;">Clientes Satisfechos</h2>
     
     <div class="review-google">
         <div class="review-header">
             <div class="avatar">C</div>
-            <div class="user-info">
-                <b>Carolina</b>
-                <span>Local Guide · 82 opiniones · 199 fotos</span>
-            </div>
+            <div class="user-info"><b>Carolina</b><span>Local Guide · 82 opiniones</span></div>
         </div>
-        <div class="stars-google"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span style="color:#70757a">Hace 5 meses</span></div>
-        <div class="review-content">Consumo en el lugar | Almuerzo | $200-300
-Baguettes deliciosos. Hay mesas para que te puedas sentar y consumir en el lugar, cervezas nacionales e importadas variedad de embutidos y quesos que puedes pedir a la mesa por gramaje a manera de tablas. Calidad en los ingredientes, precios muy razonables. Ambiente relajado. ¡Vale la pena probarlo!
-Comida: 5/5 | Servicio: 5/5 | Ambiente: 4/5</div>
+        <div class="stars-google"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="review-content">Baguettes deliciosos. Hay mesas para consumir en el lugar, variedad de embutidos y quesos por gramaje. Calidad en los ingredientes, precios muy razonables. ¡Vale la pena probarlo!</div>
     </div>
 
     <div class="review-google">
         <div class="review-header">
             <div class="avatar" style="background:#4285F4">A</div>
-            <div class="user-info">
-                <b>Adriana Jimenez</b>
-                <span>Local Guide · 353 opiniones · 1904 fotos</span>
-            </div>
+            <div class="user-info"><b>Adriana Jimenez</b><span>Local Guide · 353 opiniones</span></div>
         </div>
-        <div class="stars-google"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span style="color:#70757a">Hace un año</span></div>
-        <div class="review-content">Comida para llevar | Almuerzo | $100-200
-Un delicioso deli!!! Me regalaron el otro día unos baguettes de este lugar, fui a conocer y a recoger un pedido que había realizado por teléfono. Cual fue mi sorpresa con encontrarme con una buena selección de vinos, carnes frías los mejores jamones y charcutería española y un sin fin de servicios como tablas de quesos y charcutería, por pedido y atención a eventos.
-
-También hacen su propio pan, y tienen a la venta la famosa tortilla española y algunas ocasiones encontrarás hasta croquetas de ibérico. Su host Juan Carlos fue amabilisimo y la verdad que sus precios están igual de buenos como sus baguettes!. Completamente este sitio es una joya en la zona real de Zapopan♡.</div>
+        <div class="stars-google"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="review-content">¡Un delicioso deli! Buena selección de vinos, carnes frías y la mejor charcutería española. Una joya en la zona real de Zapopan. Cuentan con paella y tortilla española. Excelente atención de Juan Carlos.</div>
     </div>
 
     <div class="review-google">
         <div class="review-header">
             <div class="avatar" style="background:#34A853">I</div>
-            <div class="user-info">
-                <b>Ivan Hernandez</b>
-                <span>Local Guide · 77 opiniones · 121 fotos</span>
-            </div>
+            <div class="user-info"><b>Ivan Hernandez</b><span>Local Guide · 77 opiniones</span></div>
         </div>
-        <div class="stars-google"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span style="color:#70757a">Hace un año</span></div>
-        <div class="review-content">Comida para llevar | Almuerzo | $400-500
-Pedí una tabla chica de quesos y jamones, el sabor estaba excelente y muy muy rico de todo, con mucha calidad y tamaño, comimos la tabla chica 2 personas, pero es para unas 3-4 personas. La atención fue muy buena y el local muy bonito. Sin duda volvería a comprar.
-Comida: 5/5 | Servicio: 5/5 | Ambiente: 5/5</div>
+        <div class="stars-google"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="review-content">Pedí una tabla chica de quesos y jamones, el sabor estaba excelente y con mucha calidad. La atención fue muy buena y el local muy bonito. Sin duda volvería a comprar.</div>
     </div>
 </section>
 
 <div class="map-header">
-    <h3>¿Dónde nos encontramos?</h3>
-    <h2 style="color:var(--rojo-espana); font-family:var(--fuente-titulo)">Lola Chef - Zapopan</h2>
+    <h3 style="font-family: var(--fuente-titulo); color: #70757a; font-style: italic;">¿Dónde nos encontramos?</h3>
+    <p>Av. Sta. Margarita 4522, Jardín Real, 45136 Zapopan, Jal.</p>
 </div>
 <div class="map-frame">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3731.81523456789!2d-103.435!3d20.715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDQyJzU0LjAiTiAxMDPCsDI2JzA2LjAiVw!5e0!3m2!1ses!2smx!4v123456789" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <iframe src="https://maps.app.goo.gl/nv23MzDCmtdnKgAW7" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 </div>
 
 <footer>
@@ -237,7 +222,6 @@ Comida: 5/5 | Servicio: 5/5 | Ambiente: 5/5</div>
         <a href="https://www.instagram.com/lolachefmx/"><i class="fab fa-instagram"></i></a>
         <a href="https://wa.me/522225980298"><i class="fab fa-whatsapp"></i></a>
     </div>
-    <p>Av. Sta. Margarita 4522-Local 6, Valle Real, 45136 Zapopan, Jal.</p>
     <p>© 2026 Lola Chef - Alimentos Gourmet</p>
 </footer>
 
@@ -271,7 +255,7 @@ Comida: 5/5 | Servicio: 5/5 | Ambiente: 5/5</div>
                         </div>`;
                 }
             });
-        } catch (e) { console.log(e); }
+        } catch (e) { console.error(e); }
     }
     window.onload = cargarMenu;
 </script>
