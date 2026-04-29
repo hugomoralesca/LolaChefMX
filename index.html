@@ -3,263 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Duo Deli | Zapopan</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Lola Chef | Alimentos Gourmet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: #0d0d0d;
-            color: white;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
+        :root {
+            --rojo-espana: #AA151B; /* Rojo Bandera */
+            --oro-espana: #F1BF00;  /* Oro Bandera */
+            --negro-elegante: #1A1A1A;
+            --blanco-fondo: #FDFDFD;
         }
 
-        /* NAVBAR */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 5%;
-            background-color: rgba(0, 0, 0, 0.95);
-            border-bottom: 1px solid #333;
-            position: fixed;
-            width: 90%;
-            top: 0;
-            z-index: 1000;
+        body { 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            background-color: var(--blanco-fondo); 
+            margin: 0; 
+            color: var(--negro-elegante); 
+        }
+        
+        /* Header con colores de España */
+        header { 
+            background-color: var(--rojo-espana); 
+            color: white; 
+            text-align: center; 
+            padding: 2.5rem 1rem; 
+            border-bottom: 6px solid var(--oro-espana); 
         }
 
-        .logo-container img {
-            height: 65px;
-            width: auto;
+        .logo { 
+            max-width: 180px; 
+            height: auto;
+            margin-bottom: 15px; 
+            border-radius: 8px;
         }
 
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 25px;
+        .tagline { 
+            font-style: italic; 
+            font-size: 1rem; 
+            max-width: 500px; 
+            margin: 15px auto; 
+            line-height: 1.4;
+            color: #eee;
         }
 
-        .nav-icon img, .footer-social img {
-            width: 28px;
-            filter: invert(1);
-            transition: 0.3s;
+        /* Botones de Redes Sociales */
+        .social-links { margin-top: 20px; }
+        .social-links a { 
+            color: white; 
+            font-size: 1.8rem; 
+            margin: 0 15px; 
+            text-decoration: none; 
+            transition: transform 0.2s, color 0.2s; 
+            display: inline-block;
+        }
+        .social-links a:hover { 
+            color: var(--oro-espana); 
+            transform: scale(1.1); 
         }
 
-        /* HERO SECTION */
-        .hero {
-            height: 85vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            margin-top: 80px;
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('heroduodeli.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+        /* Galería de Fotos */
+        .galeria-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 15px;
         }
-
-        h1 {
-            font-size: clamp(35px, 8vw, 65px);
-            margin-bottom: 10px;
-            color: #ffffff;
+        .galeria { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+            gap: 12px; 
         }
-
-        /* SECCIÓN DE MENÚ DINÁMICO (GOOGLE SHEETS) */
-        .menu-section {
-            padding: 80px 5%;
-            background-color: #0d0d0d;
-            text-align: center;
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            max-width: 1200px;
-            margin: 40px auto 0;
-        }
-
-        .menu-item {
-            background-color: #1a1a1a;
-            padding: 25px;
-            border-radius: 15px;
-            border-left: 4px solid #ff6600;
-            text-align: left;
-            transition: 0.3s;
-        }
-
-        .menu-item:hover { transform: translateY(-5px); }
-        .menu-item h3 { color: #ff6600; margin: 0 0 10px 0; font-weight: 600; }
-        .menu-item p { color: #ccc; font-size: 0.9rem; margin-bottom: 15px; }
-        .menu-item .price { font-weight: 700; color: #fff; font-size: 1.1rem; }
-
-        /* GALERÍA */
-        .gallery-section {
-            padding: 80px 5%;
-            text-align: center;
-            background-color: #000;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .gallery-grid img {
-            width: 100%;
-            height: 400px;
+        .galeria img { 
+            width: 100%; 
+            height: 120px;
             object-fit: cover;
-            border-radius: 15px;
-            border: 1px solid #222;
+            border-radius: 6px; 
+            border: 1px solid #ddd; 
         }
 
-        /* UBICACIÓN */
-        .map-section {
-            padding: 80px 5%;
-            background-color: #0d0d0d;
+        /* Contenedor del Menú */
+        #menu-container { 
+            padding: 20px; 
+            max-width: 700px; 
+            margin: 20px auto; 
+        }
+        h2 { 
+            text-align: center; 
+            color: var(--rojo-espana); 
+            border-bottom: 2px solid var(--oro-espana);
+            display: inline-block;
+            width: 100%;
+            padding-bottom: 10px;
+        }
+
+        .item-menu { 
+            background: white; 
+            border-left: 5px solid var(--rojo-espana); 
+            margin-bottom: 12px; 
+            padding: 18px; 
+            border-radius: 4px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .nombre-platillo { font-weight: 600; font-size: 1.1rem; }
+        .item-precio { 
+            font-weight: bold; 
+            color: var(--rojo-espana); 
+            font-size: 1.2rem;
+        }
+
+        #loading { text-align: center; font-style: italic; color: #666; }
+
+        footer {
             text-align: center;
-            border-top: 1px solid #222;
+            padding: 30px;
+            font-size: 0.8rem;
+            color: #888;
         }
-
-        .map-container {
-            max-width: 1000px;
-            margin: 40px auto 0;
-            border-radius: 30px;
-            overflow: hidden;
-            height: 450px;
-            border: 2px solid #333;
-        }
-
-        /* BOTONES */
-        .btn-wa-main {
-            background-color: #25d366;
-            color: white;
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-wa-main img { width: 20px; filter: brightness(0) invert(1); }
-
-        .footer-section { padding: 60px 5% 40px; text-align: center; background-color: #000; border-top: 1px solid #222; }
-        .footer-social { display: flex; justify-content: center; gap: 30px; margin-bottom: 25px; }
-        .footer-info p { font-size: 14px; color: #555; margin: 5px 0; }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="logo-container">
-            <img src="duodelilogo.png" alt="Duo Deli Logo">
-        </div>
-        <div class="nav-right">
-            <a href="https://www.instagram.com/duodeli_/" target="_blank" class="nav-icon">
-                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
-            </a>
-            <a href="https://wa.me/523788851687" target="_blank" class="nav-icon">
-                <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-            </a>
-        </div>
-    </nav>
-
-    <header class="hero">
-        <h1>7 años trabajando para tí</h1>
-        <p>Calidad y sabor en cada detalle</p>
-        <a href="https://wa.me/523788851687" class="btn-wa-main">
-            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WA">
-            Contáctanos
+<header>
+    <img src="LogoLOLAChef.jpg" alt="Lola Chef Logo" class="logo">
+    <h1>Lola Chef</h1>
+    <p class="tagline">"Jamones ibéricos, cortes finos, carnes frías, pescados, mariscos y alimentos gourmet."</p>
+    
+    <div class="social-links">
+        <a href="https://www.facebook.com/lolachefmx/?locale=es_LA" target="_blank" title="Facebook">
+            <i class="fab fa-facebook"></i>
         </a>
-    </header>
-
-    <section class="menu-section">
-        <h2 style="font-weight: 300;">Nuestro Menú Actual</h2>
-        <p style="color: #888;">Actualizado en tiempo real</p>
-        <div id="menu-container" class="menu-grid">
-            <p style="color: #ff6600;">Cargando productos...</p>
-        </div>
-    </section>
-
-    <section class="gallery-section">
-        <h2>Nuestras Especialidades</h2>
-        <div class="gallery-grid">
-            <img src="gal1duodeli.jpg" alt="Especialidad 1">
-            <img src="gal2duodeli.jpg" alt="Especialidad 2">
-            <img src="gal3duodeli.jpg" alt="Especialidad 3">
-        </div>
-    </section>
-
-    <section class="map-section">
-        <h2>¿Dónde estamos?</h2>
-        <p style="color: #888;">Paseo solares 629, Zapopan 45019</p>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.1894451042!2d-103.4568!3d20.7015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDQyJzA1LjQiTiAxMDPCsDI3JzI0LjQiVw!5e0!3m2!1ses!2smx!4v1620000000000!5m2!1ses!2smx" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-    </section>
-
-    <div class="footer-section">
-        <div class="footer-social">
-            <a href="https://www.instagram.com/duodeli_/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
-            <a href="https://wa.me/523788851687" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"></a>
-        </div>
-        <div class="footer-info">
-            <p>Paseo solares 629, Zapopan, Jal.</p>
-            <p>© 2026 Duo Deli | MOCA Labs Digital Experience</p>
-        </div>
+        <a href="https://www.instagram.com/lolachefmx/" target="_blank" title="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/522225980298" target="_blank" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
     </div>
+</header>
+
+<section class="galeria-container">
+    <div class="galeria">
+        <img src="gal1.png" alt="Especialidad 1">
+        <img src="gal2.png" alt="Especialidad 2">
+        <img src="gal3.png" alt="Especialidad 3">
+        <img src="gal4.png" alt="Especialidad 4">
+        <img src="gal5.png" alt="Especialidad 5">
+        <img src="gal6.png" alt="Especialidad 6">
+    </div>
+</section>
+
+<div id="menu-container">
+    <h2>Catálogo de Productos</h2>
+    <div id="loading">Consultando productos frescos...</div>
+    <div id="lista-articulos"></div>
+</div>
+
+<footer>
+    &copy; 2026 Lola Chef - Alimentos Gourmet
+</footer>
 
 <script>
-    const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQm2_IgGg-pUfMrQyOADkutPOaBriS_vYk9JcsDF2zu3f9pa09Y6aMGeLnfaSouNk7ch2W6wdldAivm/pub?output=csv';
+    // Tu link de Google Sheets (CSV)
+    const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQJUlaSWLSJCLCqFE-UZEvggXm9s2oLLf-g95KdX7ISEE1cayiKEZe0-EXlPUsVxCPMLVvkzj5hX_ko/pub?output=csv';
 
-    async function loadMenu() {
+    async function cargarMenu() {
         try {
-            // Anti-caché para que los cambios de precio sean instantáneos
-            const response = await fetch(CSV_URL + '&cache=' + Math.random());
-            const data = await response.text();
+            const respuesta = await fetch(SHEET_URL);
+            const datos = await respuesta.text();
             
-            const lines = data.split(/\r?\n/);
-            const container = document.getElementById('menu-container');
-            container.innerHTML = '';
+            // Separamos por líneas y quitamos la primera (cabecera)
+            const filas = datos.split('\n').slice(1); 
+            const contenedor = document.getElementById('lista-articulos');
+            const loadingMsg = document.getElementById('loading');
+            
+            contenedor.innerHTML = ''; 
 
-            for (let i = 1; i < lines.length; i++) {
-                if (!lines[i].trim()) continue;
-
-                // Separador que respeta comas internas en descripciones
-                const cols = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+            filas.forEach(fila => {
+                // Limpiamos espacios y separamos por coma
+                const columnas = fila.split(',');
                 
-                if (cols.length >= 3) {
-                    const name = cols[0].replace(/"/g, "").trim();
-                    const desc = cols[1].replace(/"/g, "").trim();
-                    const price = cols[2].replace(/"/g, "").trim();
-                    const category = cols[3] ? cols[3].replace(/"/g, "").trim() : "";
-
-                    const card = `
-                        <div class="menu-item" style="display: flex; flex-direction: column; background: #1a1a1a; padding: 25px; border-radius: 15px; border-left: 5px solid #ff6600; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
-                            <span style="font-size: 0.75rem; color: #ff6600; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; margin-bottom: 8px;">${category}</span>
-                            <h3 style="margin: 0 0 10px 0; color: white; font-size: 1.4rem; font-weight: 600;">${name}</h3>
-                            <p style="color: #bbb; font-size: 0.95rem; line-height: 1.5; flex-grow: 1; margin-bottom: 20px;">${desc}</p>
-                            <div style="border-top: 1px solid #333; padding-top: 15px;">
-                                <span class="price" style="color: #ffffff; font-weight: 700; font-size: 1.5rem;">$${price}</span>
-                            </div>
+                if (columnas.length >= 2 && columnas[0].trim() !== "") {
+                    const nombre = columnas[0].trim();
+                    const precio = columnas[1].trim();
+                    
+                    const htmlItem = `
+                        <div class="item-menu">
+                            <span class="nombre-platillo">${nombre}</span>
+                            <span class="item-precio">$${precio}</span>
                         </div>
                     `;
-                    container.innerHTML += card;
+                    contenedor.innerHTML += htmlItem;
                 }
-            }
-        } catch (e) {
-            console.error("Error en la sincronización:", e);
+            });
+
+            loadingMsg.style.display = 'none'; // Ocultar mensaje de carga
+
+        } catch (error) {
+            console.error('Error cargando el menú:', error);
+            document.getElementById('loading').innerHTML = 'No se pudo cargar el menú. Revisa la conexión.';
         }
     }
-    loadMenu();
+
+    // Ejecutar al cargar la página
+    window.onload = cargarMenu;
 </script>
+
 </body>
+</html>
