@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duo Deli | Zapopan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #0d0d0d;
+            color: white;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            background-color: rgba(0, 0, 0, 0.95);
+            border-bottom: 1px solid #333;
+            position: fixed;
+            width: 90%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container img {
+            height: 65px;
+            width: auto;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-icon img, .footer-social img {
+            width: 28px;
+            filter: invert(1);
+            transition: 0.3s;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 80px;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('heroduodeli.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        h1 {
+            font-size: clamp(35px, 8vw, 65px);
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        /* SECCIÓN DE MENÚ DINÁMICO (GOOGLE SHEETS) */
+        .menu-section {
+            padding: 80px 5%;
+            background-color: #0d0d0d;
+            text-align: center;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+
+        .menu-item {
+            background-color: #1a1a1a;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid #ff6600;
+            text-align: left;
+            transition: 0.3s;
+        }
+
+        .menu-item:hover { transform: translateY(-5px); }
+        .menu-item h3 { color: #ff6600; margin: 0 0 10px 0; font-weight: 600; }
+        .menu-item p { color: #ccc; font-size: 0.9rem; margin-bottom: 15px; }
+        .menu-item .price { font-weight: 700; color: #fff; font-size: 1.1rem; }
+
+        /* GALERÍA */
+        .gallery-section {
+            padding: 80px 5%;
+            text-align: center;
+            background-color: #000;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 1px solid #222;
+        }
+
+        /* UBICACIÓN */
+        .map-section {
+            padding: 80px 5%;
+            background-color: #0d0d0d;
+            text-align: center;
+            border-top: 1px solid #222;
+        }
+
+        .map-container {
+            max-width: 1000px;
+            margin: 40px auto 0;
+            border-radius: 30px;
+            overflow: hidden;
+            height: 450px;
+            border: 2px solid #333;
+        }
+
+        /* BOTONES */
+        .btn-wa-main {
+            background-color: #25d366;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-wa-main img { width: 20px; filter: brightness(0) invert(1); }
+
+        .footer-section { padding: 60px 5% 40px; text-align: center; background-color: #000; border-top: 1px solid #222; }
+        .footer-social { display: flex; justify-content: center; gap: 30px; margin-bottom: 25px; }
+        .footer-info p { font-size: 14px; color: #555; margin: 5px 0; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="duodelilogo.png" alt="Duo Deli Logo">
+        </div>
+        <div class="nav-right">
+            <a href="https://www.instagram.com/duodeli_/" target="_blank" class="nav-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+            </a>
+            <a href="https://wa.me/523788851687" target="_blank" class="nav-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+            </a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>7 años trabajando para tí</h1>
+        <p>Calidad y sabor en cada detalle</p>
+        <a href="https://wa.me/523788851687" class="btn-wa-main">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WA">
+            Contáctanos
+        </a>
+    </header>
+
+    <section class="menu-section">
+        <h2 style="font-weight: 300;">Nuestro Menú Actual</h2>
+        <p style="color: #888;">Actualizado en tiempo real</p>
+        <div id="menu-container" class="menu-grid">
+            <p style="color: #ff6600;">Cargando productos...</p>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <h2>Nuestras Especialidades</h2>
+        <div class="gallery-grid">
+            <img src="gal1duodeli.jpg" alt="Especialidad 1">
+            <img src="gal2duodeli.jpg" alt="Especialidad 2">
+            <img src="gal3duodeli.jpg" alt="Especialidad 3">
+        </div>
+    </section>
+
+    <section class="map-section">
+        <h2>¿Dónde estamos?</h2>
+        <p style="color: #888;">Paseo solares 629, Zapopan 45019</p>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.1894451042!2d-103.4568!3d20.7015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDQyJzA1LjQiTiAxMDPCsDI3JzI0LjQiVw!5e0!3m2!1ses!2smx!4v1620000000000!5m2!1ses!2smx" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <div class="footer-section">
+        <div class="footer-social">
+            <a href="https://www.instagram.com/duodeli_/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+            <a href="https://wa.me/523788851687" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"></a>
+        </div>
+        <div class="footer-info">
+            <p>Paseo solares 629, Zapopan, Jal.</p>
+            <p>© 2026 Duo Deli | MOCA Labs Digital Experience</p>
+        </div>
+    </div>
+
+<script>
+    const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQm2_IgGg-pUfMrQyOADkutPOaBriS_vYk9JcsDF2zu3f9pa09Y6aMGeLnfaSouNk7ch2W6wdldAivm/pub?output=csv';
+
+    async function loadMenu() {
+        try {
+            // Anti-caché para que los cambios de precio sean instantáneos
+            const response = await fetch(CSV_URL + '&cache=' + Math.random());
+            const data = await response.text();
+            
+            const lines = data.split(/\r?\n/);
+            const container = document.getElementById('menu-container');
+            container.innerHTML = '';
+
+            for (let i = 1; i < lines.length; i++) {
+                if (!lines[i].trim()) continue;
+
+                // Separador que respeta comas internas en descripciones
+                const cols = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                
+                if (cols.length >= 3) {
+                    const name = cols[0].replace(/"/g, "").trim();
+                    const desc = cols[1].replace(/"/g, "").trim();
+                    const price = cols[2].replace(/"/g, "").trim();
+                    const category = cols[3] ? cols[3].replace(/"/g, "").trim() : "";
+
+                    const card = `
+                        <div class="menu-item" style="display: flex; flex-direction: column; background: #1a1a1a; padding: 25px; border-radius: 15px; border-left: 5px solid #ff6600; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+                            <span style="font-size: 0.75rem; color: #ff6600; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; margin-bottom: 8px;">${category}</span>
+                            <h3 style="margin: 0 0 10px 0; color: white; font-size: 1.4rem; font-weight: 600;">${name}</h3>
+                            <p style="color: #bbb; font-size: 0.95rem; line-height: 1.5; flex-grow: 1; margin-bottom: 20px;">${desc}</p>
+                            <div style="border-top: 1px solid #333; padding-top: 15px;">
+                                <span class="price" style="color: #ffffff; font-weight: 700; font-size: 1.5rem;">$${price}</span>
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += card;
+                }
+            }
+        } catch (e) {
+            console.error("Error en la sincronización:", e);
+        }
+    }
+    loadMenu();
+</script>
+</body>
