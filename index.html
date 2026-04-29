@@ -6,29 +6,31 @@
     <title>Lola Chef | Alimentos Gourmet</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap');
+
         :root {
             --rojo-espana: #AA151B;
             --oro-espana: #F1BF00;
-            --fondo-gourmet: #F4F1EA; /* Fondo tipo papel crema/pergamino sutil */
-            --tarjeta-fondo: #FFFFFF;
-            --texto-principal: #2C2C2C;
+            --fondo-gourmet: #F8F5F0;
+            --texto-principal: #202124; /* Color de texto de Google */
+            --fuente-titulo: 'Playfair Display', serif;
+            --fuente-cuerpo: 'Poppins', sans-serif;
         }
 
         body { 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            font-family: var(--fuente-cuerpo); 
             background-color: var(--fondo-gourmet); 
             margin: 0; 
             color: var(--texto-principal); 
         }
 
-        /* HERO VIDEO */
+        /* HERO - SOLO VIDEO Y REDES */
         .hero {
             position: relative;
-            height: 65vh;
+            height: 70vh;
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: center;
-            color: white;
             overflow: hidden;
         }
 
@@ -40,73 +42,106 @@
             min-height: 100%;
             transform: translate(-50%, -50%);
             z-index: -1;
-            filter: brightness(0.4);
             object-fit: cover;
         }
 
-        .hero-content { text-align: center; z-index: 1; padding: 20px; }
-        .hero-content img { max-width: 160px; border-radius: 12px; margin-bottom: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
-        .hero-content h1 { font-size: 3.5rem; margin: 0; font-weight: 800; letter-spacing: -1px; }
+        .hero-social {
+            z-index: 1;
+            padding-bottom: 30px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.6));
+            width: 100%;
+            text-align: center;
+        }
 
-        /* GALERÍA UNIFORME */
-        .galeria-section { padding: 30px 15px; max-width: 1000px; margin: auto; }
+        .hero-social a {
+            color: white;
+            font-size: 2.2rem;
+            margin: 0 20px;
+            transition: 0.3s;
+        }
+
+        /* TEXTO INTRODUCCIÓN */
+        .intro-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+        }
+
+        .intro-section h1 {
+            font-family: var(--fuente-titulo);
+            font-size: 3.5rem;
+            color: var(--rojo-espana);
+            margin: 0;
+        }
+
+        .intro-section p {
+            font-family: var(--fuente-titulo);
+            font-style: italic;
+            font-size: 1.4rem;
+            max-width: 850px;
+            margin: 20px auto;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        /* GALERÍA */
+        .galeria-section { padding: 40px 15px; max-width: 1100px; margin: auto; }
         .galeria { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
             gap: 15px; 
         }
         .galeria img { 
             width: 100%; 
-            height: 180px; /* Tamaño uniforme como en DuoDeli */
+            height: 220px; 
             object-fit: cover; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            border-radius: 4px; 
         }
-        .galeria img:hover { transform: scale(1.03); }
 
-        /* SECCIÓN MENÚ CON CARDS */
-        .section-title { text-align: center; color: var(--rojo-espana); margin-bottom: 30px; position: relative; }
-        .section-title::after { content: ''; display: block; width: 60px; height: 3px; background: var(--oro-espana); margin: 10px auto; }
-
+        /* MENÚ - TARJETAS */
         .menu-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 20px; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 25px; 
             padding: 20px;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: auto;
         }
 
         .card-item { 
-            background: var(--tarjeta-fondo); 
-            padding: 25px; 
-            border-radius: 15px; 
-            box-shadow: 0 6px 12px rgba(0,0,0,0.06); 
-            border-top: 5px solid var(--rojo-espana);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            transition: 0.3s;
+            background: #fff; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06); 
+            overflow: hidden;
+            border-top: 6px solid var(--rojo-espana);
         }
-        .card-item:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        
-        .card-header { display: flex; justify-content: space-between; align-items: flex-start; }
-        .item-nombre { font-size: 1.2rem; font-weight: 700; color: var(--negro-gourmet); line-height: 1.2; }
-        .item-precio { font-size: 1.3rem; font-weight: 800; color: var(--rojo-espana); background: #fff5f5; padding: 5px 10px; border-radius: 8px; }
 
-        /* REVIEWS */
-        .reviews-section { background: #fff; padding: 60px 20px; margin-top: 40px; }
-        .review-card { background: var(--fondo-gourmet); padding: 30px; border-radius: 20px; margin-bottom: 20px; position: relative; }
-        .review-user { font-weight: bold; font-size: 1.1rem; display: block; margin-bottom: 5px; }
-        .stars { color: var(--oro-espana); margin-bottom: 10px; display: block; }
+        .card-body { padding: 25px; }
+        .item-categoria { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--oro-espana); font-weight: 700; margin-bottom: 8px; display: block; }
+        .item-nombre { font-family: var(--fuente-titulo); font-size: 1.5rem; color: #1a1a1a; margin-bottom: 12px; display: block; }
+        .item-descripcion { font-size: 0.9rem; color: #5f6368; line-height: 1.6; margin-bottom: 20px; }
+        .card-footer { padding: 15px 25px; background: #fafafa; border-top: 1px solid #f1f1f1; text-align: right; }
+        .item-precio { font-weight: 700; color: var(--rojo-espana); font-size: 1.5rem; }
 
-        /* FOOTER & SOCIAL */
-        .social-links { margin-top: 20px; }
-        .social-links a { color: white; font-size: 2rem; margin: 0 15px; transition: 0.3s; }
-        .social-links a:hover { color: var(--oro-espana); }
+        /* REVIEWS ESTILO GOOGLE MAPS */
+        .reviews-section { max-width: 800px; margin: 60px auto; padding: 0 20px; }
+        .review-google { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 25px; border: 1px solid #dadce0; }
+        .review-header { display: flex; align-items: flex-start; margin-bottom: 12px; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; background: #AA151B; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 12px; flex-shrink: 0; }
+        .user-info b { display: block; font-size: 0.95rem; }
+        .user-info span { font-size: 0.75rem; color: #70757a; display: block; }
+        .stars-google { color: #fbbc04; font-size: 0.8rem; margin: 8px 0; }
+        .review-content { font-size: 0.9rem; line-height: 1.5; color: #3c4043; white-space: pre-line; }
 
-        footer { background: #1a1a1a; color: #ccc; text-align: center; padding: 50px 20px; }
+        /* MAPA */
+        .map-header { text-align: center; margin-top: 60px; }
+        .map-header h3 { font-family: var(--fuente-titulo); color: #70757a; font-style: italic; }
+        .map-frame { width: 95%; max-width: 1000px; height: 450px; margin: 20px auto 60px; border-radius: 12px; overflow: hidden; border: 1px solid #dadce0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+        /* FOOTER */
+        footer { background: #202124; color: white; text-align: center; padding: 60px 20px; }
+        .footer-social { margin-bottom: 25px; }
+        .footer-social a { color: var(--oro-espana); font-size: 1.8rem; margin: 0 15px; }
     </style>
 </head>
 <body>
@@ -115,17 +150,17 @@
     <video autoplay muted loop playsinline id="video-background">
         <source src="Video-hero-lola.mp4" type="video/mp4">
     </video>
-    <div class="hero-content">
-        <img src="LogoLOLAChef.jpg" alt="Lola Chef">
-        <h1>Lola Chef</h1>
-        <p style="font-size: 1.2rem; max-width: 700px; margin: 15px auto;">Jamones ibéricos, cortes finos, carnes frías, pescados, mariscos y alimentos gourmet.</p>
-        <div class="social-links">
-            <a href="https://www.facebook.com/lolachefmx/?locale=es_LA" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/lolachefmx/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/522225980298" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        </div>
+    <div class="hero-social">
+        <a href="https://www.facebook.com/lolachefmx/"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/lolachefmx/"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/522225980298"><i class="fab fa-whatsapp"></i></a>
     </div>
 </div>
+
+<section class="intro-section">
+    <h1>Lola Chef</h1>
+    <p>"Jamones ibéricos, cortes finos, carnes frías, pescados, mariscos y alimentos gourmet."</p>
+</section>
 
 <section class="galeria-section">
     <div class="galeria">
@@ -133,39 +168,75 @@
         <img src="gal2.png" alt="Especialidad 2">
         <img src="gal3.png" alt="Especialidad 3">
         <img src="gal4.png" alt="Especialidad 4">
-        <img src="gal5.png" alt="Especialidad 5">
-        <img src="gal6.png" alt="Especialidad 6">
     </div>
 </section>
 
 <section id="menu">
-    <h2 class="section-title">Nuestras Delicias</h2>
-    <div id="loading" style="text-align: center;">Cargando selección gourmet...</div>
+    <h2 style="text-align: center; font-family: var(--fuente-titulo); font-size: 2.5rem; color: var(--rojo-espana);">Nuestra Selección</h2>
     <div id="lista-articulos" class="menu-grid"></div>
 </section>
 
 <section class="reviews-section">
-    <h2 class="section-title">Clientes Satisfechos</h2>
-    <div style="max-width: 800px; margin: auto;">
-        <div class="review-card">
-            <span class="stars">★★★★★</span>
-            <span class="review-user">Carolina</span>
-            <p>"Baguettes deliciosos. Calidad en los ingredientes, precios muy razonables. Ambiente relajado. ¡Vale la pena probarlo!"</p>
+    <h2 style="font-family: var(--fuente-titulo); margin-bottom: 30px; text-align: center;">Reseñas de Google</h2>
+    
+    <div class="review-google">
+        <div class="review-header">
+            <div class="avatar">C</div>
+            <div class="user-info">
+                <b>Carolina</b>
+                <span>Local Guide · 82 opiniones · 199 fotos</span>
+            </div>
         </div>
-        <div class="review-card">
-            <span class="stars">★★★★★</span>
-            <span class="review-user">Adriana Jimenez</span>
-            <p>"¡Un delicioso deli! Buena selección de vinos, carnes frías y la mejor charcutería española. Una joya en Zapopan."</p>
+        <div class="stars-google"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span style="color:#70757a">Hace 5 meses</span></div>
+        <div class="review-content">Consumo en el lugar | Almuerzo | $200-300
+Baguettes deliciosos. Hay mesas para que te puedas sentar y consumir en el lugar, cervezas nacionales e importadas variedad de embutidos y quesos que puedes pedir a la mesa por gramaje a manera de tablas. Calidad en los ingredientes, precios muy razonables. Ambiente relajado. ¡Vale la pena probarlo!
+Comida: 5/5 | Servicio: 5/5 | Ambiente: 4/5</div>
+    </div>
+
+    <div class="review-google">
+        <div class="review-header">
+            <div class="avatar" style="background:#4285F4">A</div>
+            <div class="user-info">
+                <b>Adriana Jimenez</b>
+                <span>Local Guide · 353 opiniones · 1904 fotos</span>
+            </div>
         </div>
-        <div class="review-card">
-            <span class="stars">★★★★★</span>
-            <span class="review-user">Ivan Hernandez</span>
-            <p>"La tabla de quesos y jamones estaba excelente, mucha calidad y tamaño. Sin duda volvería a comprar."</p>
+        <div class="stars-google"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span style="color:#70757a">Hace un año</span></div>
+        <div class="review-content">Comida para llevar | Almuerzo | $100-200
+Un delicioso deli!!! Me regalaron el otro día unos baguettes de este lugar, fui a conocer y a recoger un pedido que había realizado por teléfono. Cual fue mi sorpresa con encontrarme con una buena selección de vinos, carnes frías los mejores jamones y charcutería española y un sin fin de servicios como tablas de quesos y charcutería, por pedido y atención a eventos.
+
+También hacen su propio pan, y tienen a la venta la famosa tortilla española y algunas ocasiones encontrarás hasta croquetas de ibérico. Su host Juan Carlos fue amabilisimo y la verdad que sus precios están igual de buenos como sus baguettes!. Completamente este sitio es una joya en la zona real de Zapopan♡.</div>
+    </div>
+
+    <div class="review-google">
+        <div class="review-header">
+            <div class="avatar" style="background:#34A853">I</div>
+            <div class="user-info">
+                <b>Ivan Hernandez</b>
+                <span>Local Guide · 77 opiniones · 121 fotos</span>
+            </div>
         </div>
+        <div class="stars-google"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span style="color:#70757a">Hace un año</span></div>
+        <div class="review-content">Comida para llevar | Almuerzo | $400-500
+Pedí una tabla chica de quesos y jamones, el sabor estaba excelente y muy muy rico de todo, con mucha calidad y tamaño, comimos la tabla chica 2 personas, pero es para unas 3-4 personas. La atención fue muy buena y el local muy bonito. Sin duda volvería a comprar.
+Comida: 5/5 | Servicio: 5/5 | Ambiente: 5/5</div>
     </div>
 </section>
 
+<div class="map-header">
+    <h3>¿Dónde nos encontramos?</h3>
+    <h2 style="color:var(--rojo-espana); font-family:var(--fuente-titulo)">Lola Chef - Zapopan</h2>
+</div>
+<div class="map-frame">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3731.81523456789!2d-103.435!3d20.715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDQyJzU0LjAiTiAxMDPCsDI2JzA2LjAiVw!5e0!3m2!1ses!2smx!4v123456789" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+
 <footer>
+    <div class="footer-social">
+        <a href="https://www.facebook.com/lolachefmx/"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/lolachefmx/"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/522225980298"><i class="fab fa-whatsapp"></i></a>
+    </div>
     <p>Av. Sta. Margarita 4522-Local 6, Valle Real, 45136 Zapopan, Jal.</p>
     <p>© 2026 Lola Chef - Alimentos Gourmet</p>
 </footer>
@@ -179,7 +250,6 @@
             const datos = await respuesta.text();
             const filas = datos.split('\n').slice(1); 
             const contenedor = document.getElementById('lista-articulos');
-            
             contenedor.innerHTML = ''; 
 
             filas.forEach(fila => {
@@ -187,25 +257,23 @@
                 if (columnas.length >= 2 && columnas[0].trim() !== "") {
                     const nombre = columnas[0].trim();
                     const precio = columnas[1].trim();
+                    const desc = columnas[2] ? columnas[2].trim() : "Experiencia gourmet única.";
+                    const cate = columnas[3] ? columnas[3].trim() : "Gourmet";
                     
-                    const htmlItem = `
+                    contenedor.innerHTML += `
                         <div class="card-item">
-                            <div class="card-header">
+                            <div class="card-body">
+                                <span class="item-categoria">${cate}</span>
                                 <span class="item-nombre">${nombre}</span>
-                                <span class="item-precio">$${precio}</span>
+                                <p class="item-descripcion">${desc}</p>
                             </div>
-                        </div>
-                    `;
-                    contenedor.innerHTML += htmlItem;
+                            <div class="card-footer"><span class="item-precio">$${precio}</span></div>
+                        </div>`;
                 }
             });
-            document.getElementById('loading').style.display = 'none';
-        } catch (error) {
-            document.getElementById('loading').innerHTML = 'Error al conectar.';
-        }
+        } catch (e) { console.log(e); }
     }
     window.onload = cargarMenu;
 </script>
-
 </body>
 </html>
