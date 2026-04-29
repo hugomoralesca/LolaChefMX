@@ -10,7 +10,7 @@
 
         :root {
             --rojo-espana: #AA151B;
-            --oro-oscuro: #B8860B; /* Amarillo/Oro más oscuro para mejor contraste */
+            --oro-oscuro: #B8860B;
             --fondo-gourmet: #F8F5F0;
             --texto-principal: #202124;
             --fuente-titulo: 'Playfair Display', serif;
@@ -54,16 +54,13 @@
         }
 
         .hero-social a {
-            color: white;
-            font-size: 2.2rem;
-            margin: 0 20px;
-            transition: 0.3s;
+            color: white; font-size: 2.2rem; margin: 0 20px; transition: 0.3s;
         }
 
-        /* TEXTO INTRODUCCIÓN (Altura reducida) */
+        /* INTRODUCCIÓN */
         .intro-section {
             text-align: center;
-            padding: 30px 20px; /* Reducción de espacio en blanco */
+            padding: 30px 20px;
             background: white;
         }
 
@@ -87,18 +84,13 @@
         /* GALERÍA */
         .galeria-section { padding: 30px 15px; max-width: 1100px; margin: auto; }
         .galeria { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-            gap: 15px; 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; 
         }
         .galeria img { 
-            width: 100%; 
-            height: 220px; 
-            object-fit: cover; 
-            border-radius: 4px; 
+            width: 100%; height: 220px; object-fit: cover; border-radius: 4px; 
         }
 
-        /* MENÚ - TARJETAS */
+        /* MENÚ - GRID */
         .menu-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
@@ -108,24 +100,7 @@
             margin: auto;
         }
 
-        .card-item { 
-            background: #fff; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06); 
-            overflow: hidden;
-            border-top: 6px solid var(--rojo-espana);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card-body { padding: 25px; flex-grow: 1; }
-        .item-categoria { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--oro-oscuro); font-weight: 700; margin-bottom: 8px; display: block; }
-        .item-nombre { font-family: var(--fuente-titulo); font-size: 1.5rem; color: #1a1a1a; margin-bottom: 12px; display: block; }
-        .item-descripcion { font-size: 0.9rem; color: #5f6368; line-height: 1.6; }
-        .card-footer { padding: 15px 25px; background: #fafafa; border-top: 1px solid #f1f1f1; text-align: right; }
-        .item-precio { font-weight: 700; color: var(--rojo-espana); font-size: 1.5rem; }
-
-        /* REVIEWS ESTILO GOOGLE MAPS */
+        /* CLIENTES SATISFECHOS */
         .reviews-section { max-width: 800px; margin: 50px auto; padding: 0 20px; }
         .review-google { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 25px; border: 1px solid #dadce0; }
         .review-header { display: flex; align-items: flex-start; margin-bottom: 12px; }
@@ -136,10 +111,9 @@
         .review-content { font-size: 0.9rem; line-height: 1.5; color: #3c4043; white-space: pre-line; }
 
         /* MAPA */
-        .map-header { text-align: center; margin-top: 50px; }
-        .map-frame { width: 95%; max-width: 1000px; height: 450px; margin: 20px auto 60px; border-radius: 12px; overflow: hidden; border: 1px solid #dadce0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .map-section { text-align: center; padding: 50px 20px; }
+        .map-container { width: 100%; max-width: 1000px; height: 450px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 1px solid #dadce0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
 
-        /* FOOTER */
         footer { background: #202124; color: white; text-align: center; padding: 50px 20px; }
         .footer-social { margin-bottom: 20px; }
         .footer-social a { color: var(--oro-oscuro); font-size: 1.8rem; margin: 0 15px; }
@@ -165,16 +139,17 @@
 
 <section class="galeria-section">
     <div class="galeria">
-        <img src="gal1.png" alt="Especialidad 1">
-        <img src="gal2.png" alt="Especialidad 2">
-        <img src="gal3.png" alt="Especialidad 3">
-        <img src="gal4.png" alt="Especialidad 4">
+        <img src="gal1.png" alt="1">
+        <img src="gal2.png" alt="2">
+        <img src="gal3.png" alt="3">
+        <img src="gal4.png" alt="4">
     </div>
 </section>
 
 <section id="menu">
     <h2 style="text-align: center; font-family: var(--fuente-titulo); font-size: 2.5rem; color: var(--rojo-espana);">Nuestra Selección</h2>
-    <div id="lista-articulos" class="menu-grid"></div>
+    <div id="lista-articulos" class="menu-grid">
+        </div>
 </section>
 
 <section class="reviews-section">
@@ -197,24 +172,15 @@
         <div class="stars-google"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
         <div class="review-content">¡Un delicioso deli! Buena selección de vinos, carnes frías y la mejor charcutería española. Una joya en la zona real de Zapopan. Cuentan con paella y tortilla española. Excelente atención de Juan Carlos.</div>
     </div>
-
-    <div class="review-google">
-        <div class="review-header">
-            <div class="avatar" style="background:#34A853">I</div>
-            <div class="user-info"><b>Ivan Hernandez</b><span>Local Guide · 77 opiniones</span></div>
-        </div>
-        <div class="stars-google"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <div class="review-content">Pedí una tabla chica de quesos y jamones, el sabor estaba excelente y con mucha calidad. La atención fue muy buena y el local muy bonito. Sin duda volvería a comprar.</div>
-    </div>
 </section>
 
-<div class="map-header">
-    <h3 style="font-family: var(--fuente-titulo); color: #70757a; font-style: italic;">¿Dónde nos encontramos?</h3>
-    <p>Av. Sta. Margarita 4522, Jardín Real, 45136 Zapopan, Jal.</p>
-</div>
-<div class="map-frame">
-    <iframe src="https://maps.app.goo.gl/nv23MzDCmtdnKgAW7" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-</div>
+<section class="map-section">
+    <h2 style="font-family: var(--fuente-titulo);">¿Dónde estamos?</h2>
+    <p style="color: #888;">Av. Sta. Margarita 4522, Jardín Real, 45136 Zapopan, Jal.</p>
+    <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3731.8441994119615!2d-103.4357948!3d20.7165977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428afbc1a151b7f%3A0x7d65696541f5370d!2sLola%20Chef!5e0!3m2!1ses-419!2smx!4v1714424339234!5m2!1ses-419!2smx" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+</section>
 
 <footer>
     <div class="footer-social">
@@ -226,38 +192,47 @@
 </footer>
 
 <script>
-    const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQJUlaSWLSJCLCqFE-UZEvggXm9s2oLLf-g95KdX7ISEE1cayiKEZe0-EXlPUsVxCPMLVvkzj5hX_ko/pub?output=csv';
+    const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQJUlaSWLSJCLCqFE-UZEvggXm9s2oLLf-g95KdX7ISEE1cayiKEZe0-EXlPUsVxCPMLVvkzj5hX_ko/pub?output=csv';
 
-    async function cargarMenu() {
+    async function loadMenu() {
         try {
-            const respuesta = await fetch(SHEET_URL);
-            const datos = await respuesta.text();
-            const filas = datos.split('\n').slice(1); 
-            const contenedor = document.getElementById('lista-articulos');
-            contenedor.innerHTML = ''; 
+            const response = await fetch(CSV_URL + '&cache=' + Math.random());
+            const data = await response.text();
+            
+            const lines = data.split(/\r?\n/);
+            const container = document.getElementById('lista-articulos');
+            container.innerHTML = '';
 
-            filas.forEach(fila => {
-                const columnas = fila.split(',');
-                if (columnas.length >= 2 && columnas[0].trim() !== "") {
-                    const nombre = columnas[0].trim();
-                    const precio = columnas[1].trim();
-                    const desc = columnas[2] ? columnas[2].trim() : "Experiencia gourmet única.";
-                    const cate = columnas[3] ? columnas[3].trim() : "Gourmet";
-                    
-                    contenedor.innerHTML += `
-                        <div class="card-item">
-                            <div class="card-body">
-                                <span class="item-categoria">${cate}</span>
-                                <span class="item-nombre">${nombre}</span>
-                                <p class="item-descripcion">${desc}</p>
+            for (let i = 1; i < lines.length; i++) {
+                if (!lines[i].trim()) continue;
+
+                // Regex de DuoDeli para separar columnas respetando comas internas
+                const cols = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                
+                if (cols.length >= 3) {
+                    const name = cols[0].replace(/"/g, "").trim();
+                    const desc = cols[1].replace(/"/g, "").trim();
+                    const price = cols[2].replace(/"/g, "").trim();
+                    const category = cols[3] ? cols[3].replace(/"/g, "").trim() : "Gourmet";
+
+                    const card = `
+                        <div class="menu-item" style="display: flex; flex-direction: column; background: white; padding: 25px; border-radius: 12px; border-top: 6px solid var(--rojo-espana); box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
+                            <span style="font-size: 0.75rem; color: var(--oro-oscuro); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; margin-bottom: 8px;">${category}</span>
+                            <h3 style="margin: 0 0 10px 0; color: #1a1a1a; font-family: var(--fuente-titulo); font-size: 1.5rem;">${name}</h3>
+                            <p style="color: #5f6368; font-size: 0.9rem; line-height: 1.5; flex-grow: 1; margin-bottom: 20px;">${desc}</p>
+                            <div style="border-top: 1px solid #f1f1f1; padding-top: 15px; text-align: right;">
+                                <span style="color: var(--rojo-espana); font-weight: 700; font-size: 1.5rem;">$${price}</span>
                             </div>
-                            <div class="card-footer"><span class="item-precio">$${precio}</span></div>
-                        </div>`;
+                        </div>
+                    `;
+                    container.innerHTML += card;
                 }
-            });
-        } catch (e) { console.error(e); }
+            }
+        } catch (e) {
+            console.error("Error:", e);
+        }
     }
-    window.onload = cargarMenu;
+    loadMenu();
 </script>
 </body>
 </html>
