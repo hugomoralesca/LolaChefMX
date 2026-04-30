@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lola Chef | Alimentos Gourmet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap');
+        :root {
+            --rojo-espana: #AA151B;
+            --oro-oscuro: #B8860B;
+            --fondo-gourmet: #F8F5F0;
+            --texto-principal: #202124;
+            --fuente-titulo: 'Playfair Display', serif;
+            --fuente-cuerpo: 'Poppins', sans-serif;
+        }
+        * { box-sizing: border-box; }
+        body { font-family: var(--fuente-cuerpo); background-color: var(--fondo-gourmet); margin: 0; color: var(--texto-principal); }
+
+        /* NAVBAR */
+        nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(20,20,20,0.85); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: space-between; padding: 14px 40px; }
+        .nav-logo { font-family: var(--fuente-titulo); color: white; font-size: 1.4rem; letter-spacing: 2px; text-decoration: none; }
+        .nav-links { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; }
+        .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--oro-oscuro); }
+
+        /* HERO */
+        .hero { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        #video-background { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); z-index: 0; object-fit: cover; }
+        .hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.45); z-index: 1; }
+        .hero-content { position: relative; z-index: 2; text-align: center; color: white; padding: 0 20px; }
+        .hero-content h1 { font-family: var(--fuente-titulo); font-size: clamp(3rem, 8vw, 6rem); margin: 0 0 10px; letter-spacing: 4px; text-transform: uppercase; text-shadow: 0 2px 20px rgba(0,0,0,0.5); }
+        .hero-content p { font-family: var(--fuente-titulo); font-style: italic; font-size: clamp(1rem, 2.5vw, 1.4rem); color: rgba(255,255,255,0.88); max-width: 650px; margin: 0 auto 30px; }
+        .hero-social { margin-bottom: 30px; }
+        .hero-social a { color: white; font-size: 1.8rem; margin: 0 14px; transition: color 0.3s, transform 0.3s; display: inline-block; }
+        .hero-social a:hover { color: var(--oro-oscuro); transform: translateY(-3px); }
+        .btn-cta { display: inline-block; background: var(--rojo-espana); color: white; text-decoration: none; padding: 14px 36px; border-radius: 40px; font-size: 0.9rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; transition: background 0.3s, transform 0.2s; margin-top: 10px; }
+        .btn-cta:hover { background: #8a1015; transform: translateY(-2px); }
+
+        /* SEPARADOR AZULEJO */
+        .azulejo-divider { width: 100%; height: 14px; background-image: repeating-linear-gradient(90deg, var(--rojo-espana) 0px, var(--rojo-espana) 18px, var(--oro-oscuro) 18px, var(--oro-oscuro) 36px, #fff 36px, #fff 54px, var(--oro-oscuro) 54px, var(--oro-oscuro) 72px, var(--rojo-espana) 72px, var(--rojo-espana) 90px); opacity: 0.65; }
+
+        /* INTRO */
+        .intro-section { text-align: center; padding: 50px 20px 40px; background: white; }
+        .intro-eyebrow { font-size: 0.85rem; color: var(--oro-oscuro); text-transform: uppercase; letter-spacing: 3px; margin: 0 0 8px; }
+        .intro-section h1 { font-family: var(--fuente-titulo); font-size: 2.8rem; color: var(--rojo-espana); margin: 0 0 12px; letter-spacing: 3px; text-transform: uppercase; }
+        .intro-section p { font-family: var(--fuente-titulo); font-style: italic; font-size: 1.15rem; max-width: 700px; margin: 0 auto; color: #555; line-height: 1.6; }
+
+        /* GALERÍA */
+        .galeria-section { padding: 40px 15px; max-width: 1100px; margin: auto; }
+        .galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+        .galeria img { width: 100%; height: 240px; object-fit: cover; border-radius: 6px; transition: transform 0.3s, box-shadow 0.3s; }
+        .galeria img:hover { transform: scale(1.03); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+
+        /* MENÚ */
+        #menu { padding-bottom: 40px; }
+        .menu-sub { text-align: center; color: #888; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; margin: 0 0 30px; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; padding: 20px; max-width: 1200px; margin: auto; }
+        .menu-item { display: flex; flex-direction: column; background: white; padding: 25px; border-radius: 12px; border-top: 5px solid var(--rojo-espana); box-shadow: 0 4px 15px rgba(0,0,0,0.06); transition: transform 0.25s, box-shadow 0.25s; }
+        .menu-item:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .menu-item .categoria { font-size: 0.72rem; color: var(--oro-oscuro); text-transform: uppercase; letter-spacing: 1.8px; font-weight: 700; margin-bottom: 8px; }
+        .menu-item h3 { margin: 0 0 10px; color: #1a1a1a; font-family: var(--fuente-titulo); font-size: 1.35rem; }
+        .menu-item p { color: #5f6368; font-size: 0.88rem; line-height: 1.55; flex-grow: 1; margin-bottom: 20px; }
+        .menu-item .precio-wrap { border-top: 1px solid #f1f1f1; padding-top: 14px; text-align: right; }
+        .menu-item .precio-wrap span { color: var(--rojo-espana); font-weight: 700; font-size: 1.5rem; }
+
+        /* RESEÑAS */
+        .reviews-section { max-width: 800px; margin: 50px auto; padding: 0 20px; }
+        .reviews-section > h2 { font-family: var(--fuente-titulo); margin-bottom: 8px; text-align: center; }
+        .rating-general { text-align: center; margin-bottom: 30px; font-size: 0.95rem; color: #555; }
+        .rating-general .stars { color: #fbbc04; font-size: 1.1rem; margin-right: 4px; }
+        .rating-general strong { color: var(--texto-principal); }
+        .review-google { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 20px; border: 1px solid #dadce0; }
+        .review-header { display: flex; align-items: flex-start; margin-bottom: 12px; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--rojo-espana); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 12px; flex-shrink: 0; }
+        .user-info b { display: block; font-size: 0.95rem; }
+        .user-info span { font-size: 0.75rem; color: #70757a; display: block; }
+        .stars-google { color: #fbbc04; font-size: 0.8rem; margin: 8px 0; }
+        .review-content { font-size: 0.9rem; line-height: 1.5; color: #3c4043; white-space: pre-line; }
+
+        /* MAPA */
+        .map-section { text-align: center; padding: 60px 20px; background-color: white; }
+        .map-section h2 { font-family: var(--fuente-titulo); font-size: 2rem; margin-bottom: 8px; }
+        .map-section .address-text { color: #666; margin-bottom: 25px; font-size: 0.95rem; }
+        .map-container { width: 100%; max-width: 1000px; height: 450px; margin: 0 auto; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.12); border: 1px solid #eee; }
+
+        /* FOOTER */
+        footer { background: #202124; color: white; text-align: center; padding: 50px 20px; }
+        .footer-social { margin-bottom: 20px; }
+        .footer-social a { color: var(--oro-oscuro); font-size: 1.8rem; margin: 0 15px; transition: opacity 0.3s; }
+        .footer-social a:hover { opacity: 0.75; }
+        footer p { color: rgba(255,255,255,0.5); font-size: 0.85rem; margin: 5px 0; }
+        .footer-frase { font-family: var(--fuente-titulo); font-style: italic; color: rgba(255,255,255,0.3); font-size: 0.8rem; }
+
+        /* WHATSAPP FLOTANTE */
+        .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 999; background: #25D366; color: white; width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.9rem; box-shadow: 0 4px 18px rgba(37,211,102,0.5); text-decoration: none; transition: transform 0.25s, box-shadow 0.25s; }
+        .wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 24px rgba(37,211,102,0.65); }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            nav { padding: 12px 20px; }
+            .nav-links { gap: 16px; }
+            .nav-links a { font-size: 0.72rem; }
+            .hero-content h1 { letter-spacing: 2px; }
+            .intro-section h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#" class="nav-logo">Lola Chef</a>
+    <ul class="nav-links">
+        <li><a href="#menu">Selección</a></li>
+        <li><a href="#resenas">Reseñas</a></li>
+        <li><a href="#ubicacion">Ubicación</a></li>
+    </ul>
+</nav>
+
+<div class="hero">
+    <video autoplay muted loop playsinline id="video-background">
+        <source src="Video-hero-lola.mp4" type="video/mp4">
+    </video>
+    <div class="hero-content">
+        <h1>Lola Chef</h1>
+        <p>"Jamones ibéricos, cortes finos, carnes frías, pescados, mariscos y alimentos gourmet."</p>
+        <div class="hero-social">
+            <a href="https://www.facebook.com/lolachefmx/" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/lolachefmx/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/522225980298" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <a href="#menu" class="btn-cta">Ver nuestra selección</a>
+    </div>
+</div>
+
+<div class="azulejo-divider"></div>
+
+<section class="intro-section">
+    <p class="intro-eyebrow">Alimentos Gourmet · Zapopan</p>
+    <h1>Lola Chef</h1>
+    <p>Un pedazo de España en el corazón de Zapopan. Charcutería, vinos, paella y lo mejor de la gastronomía ibérica.</p>
+</section>
+
+<section class="galeria-section">
+    <div class="galeria">
+        <img src="gal1.png" alt="Especialidad 1">
+        <img src="gal2.png" alt="Especialidad 2">
+        <img src="gal3.png" alt="Especialidad 3">
+        <img src="gal4.png" alt="Especialidad 4">
+    </div>
+</section>
+
+<div class="azulejo-divider"></div>
+
+<section id="menu">
+    <h2 style="text-align:center; font-family:var(--fuente-titulo); font-size:2.5rem; color:var(--rojo-espana); margin: 40px 0 6px;">Nuestra Selección</h2>
+    <p class="menu-sub">Productos importados · Charcutería · Gourmet</p>
+    <div id="lista-articulos" class="menu-grid"></div>
+</section>
+
+<div class="azulejo-divider"></div>
+
+<section class="reviews-section" id="resenas">
+    <h2>Clientes Satisfechos</h2>
+    <div class="rating-general">
+        <span class="stars">★★★★★</span>
+        <strong>4.9</strong> · 353 opiniones en Google
+    </div>
+    <div class="review-google">
+        <div class="review-header">
+            <div class="avatar">C</div>
+            <div class="user-info"><b>Carolina</b><span>Local Guide · 82 opiniones</span></div>
+        </div>
+        <div class="stars-google"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="review-content">Baguettes deliciosos. Hay mesas para consumir en el lugar, variedad de embutidos y quesos por gramaje. Calidad en los ingredientes, precios muy razonables. ¡Vale la pena probarlo!</div>
+    </div>
+    <div class="review-google">
+        <div class="review-header">
+            <div class="avatar" style="background:#4285F4">A</div>
+            <div class="user-info"><b>Adriana Jimenez</b><span>Local Guide · 353 opiniones</span></div>
+        </div>
+        <div class="stars-google"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="review-content">¡Un delicioso deli! Buena selección de vinos, carnes frías y la mejor charcutería española. Una joya en la zona real de Zapopan. Cuentan con paella y tortilla española. Excelente atención de Juan Carlos.</div>
+    </div>
+</section>
+
+<div class="azulejo-divider"></div>
+
+<section class="map-section" id="ubicacion">
+    <h2>¿Dónde estamos?</h2>
+    <p class="address-text">
+        <i class="fas fa-map-marker-alt" style="color:var(--rojo-espana); margin-right:6px;"></i>
+        Av. Sta. Margarita 4522-Local 6, Valle Real, 45136 Zapopan, Jal.
+    </p>
+    <div class="map-container">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.174244243685!2d-103.4357777!3d20.7031389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428af02070f1a9b%3A0xe5a1b32d1d0c430e!2sAv%20Santa%20Margarita%204522-Local%206%2C%20Valle%20Real%2C%2045136%20Zapopan%2C%20Jal.!5e0!3m2!1ses-419!2smx!4v1714412345678"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-social">
+        <a href="https://www.facebook.com/lolachefmx/"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/lolachefmx/"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/522225980298"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <p>© 2026 Lola Chef – Alimentos Gourmet</p>
+    <p class="footer-frase">Hecho con 🥖 en Zapopan, Jalisco</p>
+</footer>
+
+<a href="https://wa.me/522225980298" class="wa-float" target="_blank" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+    const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQJUlaSWLSJCLCqFE-UZEvggXm9s2oLLf-g95KdX7ISEE1cayiKEZe0-EXlPUsVxCPMLVvkzj5hX_ko/pub?output=csv';
+
+    async function loadMenu() {
+        try {
+            const response = await fetch(CSV_URL + '&cache=' + Math.random());
+            const data = await response.text();
+            const lines = data.split(/\r?\n/);
+            const container = document.getElementById('lista-articulos');
+            container.innerHTML = '';
+            for (let i = 1; i < lines.length; i++) {
+                if (!lines[i].trim()) continue;
+                const cols = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                if (cols.length >= 3) {
+                    const name     = cols[0].replace(/"/g, "").trim();
+                    const desc     = cols[1].replace(/"/g, "").trim();
+                    const price    = cols[2].replace(/"/g, "").trim();
+                    const category = cols[3] ? cols[3].replace(/"/g, "").trim() : "Gourmet";
+                    container.innerHTML += `
+                        <div class="menu-item">
+                            <span class="categoria">${category}</span>
+                            <h3>${name}</h3>
+                            <p>${desc}</p>
+                            <div class="precio-wrap"><span>$${price}</span></div>
+                        </div>`;
+                }
+            }
+        } catch (e) { console.error("Error cargando el menú:", e); }
+    }
+
+    loadMenu();
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+        });
+    });
+</script>
+</body>
+</html>
