@@ -229,7 +229,11 @@
 </a>
 
 <script>
-    const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQJUlaSWLSJCLCqFE-UZEvggXm9s2oLLf-g95KdX7ISEE1cayiKEZe0-EXlPUsVxCPMLVvkzj5hX_ko/pub?output=csv';
+    // Hoja de cálculo del menú (Google Sheets)
+    // Editar aquí: https://docs.google.com/spreadsheets/d/1V_uCakDoXCsYJYKwKZmgf4BR-5tY9lYALX-DEoqKLnc/edit
+    // IMPORTANTE: la hoja debe estar compartida como "Cualquier persona con el enlace: Lector"
+    const SHEET_ID = '1V_uCakDoXCsYJYKwKZmgf4BR-5tY9lYALX-DEoqKLnc';
+    const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=0`;
 
     async function loadMenu() {
         try {
